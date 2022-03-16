@@ -1,6 +1,6 @@
 const express = require('express');
 const mysql = require('mysql2');
-// const logger = require('./middleware/logger');
+
 const init = require('./index');
 const path = require('path');
 const app = express();
@@ -12,13 +12,17 @@ const db = mysql.createConnection(
         password: 'password',
         database: 'employee_db'
     },
-    console.log(`connected to the employee_db database.`)
+    console.log(`connected to the employee_db database. line 15`)
 );
+
+db.query('SELECT * FROM department', function (err, results) {
+    console.log(results);
+  });
 
 //MIDDLEWARE
 app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
-// app.use(logger);
+
 app.use(init);
 
 

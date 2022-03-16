@@ -1,13 +1,9 @@
 const express = require('express');
 const mysql = require('mysql2');
-const { userInfo } = require('os');
-
-const PORT = process.env.PORT || 3002;
+// const logger = require('./middleware/logger');
+const init = require('./index');
+const path = require('path');
 const app = express();
-console.log(mysql);
-
-app.use(express.urlencoded({ extended: false}));
-app.use(express.json());
 
 const db = mysql.createConnection(
     {
@@ -19,14 +15,13 @@ const db = mysql.createConnection(
     console.log(`connected to the employee_db database.`)
 );
 
-db.query('SELECT * FROM role', function (err, results) {
-    console.log(results);
-});
+//MIDDLEWARE
+app.use(express.urlencoded({ extended: false}));
+app.use(express.json());
+// app.use(logger);
+app.use(init);
 
-app.use((req, res) => {
-    res.status(404).end();
-});
 
-app.listenerCount(PORT, () => {
-    console.log(`server running on port ${PORT}`);
-});
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => console.info(`http://localhost:${PORT}`));
+

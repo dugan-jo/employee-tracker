@@ -1,6 +1,7 @@
 # 12 SQL: Employee Tracker
 
-##Video Link
+## Video Link
+
 https://drive.google.com/file/d/1vPAhgE_9dDfZezGGIhT0CY7uX-lvMYfD/view
 
 ## Task

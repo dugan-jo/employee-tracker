@@ -54,7 +54,7 @@ const init = () => {
                             console.log(err)
                         } else {
                             console.log(`NEW ${data.newDepartmentName} DEPARTMENT ADDED`)
-                            db.query('SELECT * FROM roles', function (err, results) {
+                            db.query('SELECT * FROM department', function (err, results) {
                                 console.table(results);
                                 init()
                             })

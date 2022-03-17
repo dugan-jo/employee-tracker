@@ -10,8 +10,8 @@ const db = mysql.createConnection(
     console.log(`connected to the employee_db database.`)
 );
 
-db.query('SELECT * FROM department', function (err, results) {
-    console.table(results);
-  });
+// db.query('SELECT * FROM department', function (err, results) {
+//     console.table(results);
+//   });
 
 module.exports = db;
